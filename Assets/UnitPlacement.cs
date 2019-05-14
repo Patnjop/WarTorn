@@ -15,6 +15,7 @@ public class UnitPlacement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SetUnit(units[0]);
         toolbarExpansion = UIManager.GetComponent<ToolbarExpansion>();
     }
 
@@ -28,7 +29,7 @@ public class UnitPlacement : MonoBehaviour
             m = new Vector3(m.x, m.y, 9);
             Vector3 p = Camera.main.ScreenToWorldPoint(m);
             currentUnit.position = new Vector3(p.x, 0.1f, p.z);
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(1))
             {
                 unitPlaced = true;
                 SetUnit(units[toolbarExpansion.unitSelected]);
