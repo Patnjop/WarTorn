@@ -7,6 +7,7 @@ public class ToolbarExpansion : MonoBehaviour
 {
     public Button unitToolbarButton;
     public GameObject[] unitTypes;
+    public GameObject temp;
     public Image Background;
     RectTransform unitToolbar;
     public Text unitArrow, unitArrow2;
@@ -100,8 +101,8 @@ public class ToolbarExpansion : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 unitSelected = 1;
-                unitPlacement.SetUnit(unitPlacement.units[unitSelected]);
-                SwitchToolbar();
+                temp = unitPlacement.units[unitSelected];
+                unitPlacement.SetUnit(temp);
             }
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {

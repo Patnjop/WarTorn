@@ -642,9 +642,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   units:
   - {fileID: 1592817986391234438, guid: 96959c2e8a5aac4468e1acc251386358, type: 3}
-  - {fileID: 2729347323267558557, guid: 9fb2fdeb3a01bc042a04b28c9f4a21c2, type: 3}
+  - {fileID: 4522997979399661136, guid: 3a08c95be0c266c46bb3e9831a16d5f8, type: 3}
   BlueInfantryMat: {fileID: 2100000, guid: 7ae6285f75c455e43834e7bb075c1b3f, type: 2}
   UIManager: {fileID: 1815156051}
+  setObject: {fileID: 0}
 --- !u!4 &807133766
 Transform:
   m_ObjectHideFlags: 0
@@ -1365,6 +1366,7 @@ MonoBehaviour:
   - {fileID: 1695385050}
   - {fileID: 431391821}
   - {fileID: 1691641995}
+  temp: {fileID: 0}
   Background: {fileID: 1019020333}
   unitArrow: {fileID: 797807418}
   unitArrow2: {fileID: 134836991}

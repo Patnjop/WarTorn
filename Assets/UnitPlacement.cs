@@ -8,10 +8,11 @@ public class UnitPlacement : MonoBehaviour
     public Material BlueInfantryMat;
     public GameObject UIManager;
     ToolbarExpansion toolbarExpansion;
-
+    public GameObject setObject;
     bool unitPlaced;
     int classIndex;
     Transform currentUnit;
+    Transform tempUnit;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,8 +39,20 @@ public class UnitPlacement : MonoBehaviour
     }
     public void SetUnit(GameObject g)
     {
+        setObject = (GameObject)Instantiate(g);
+        currentUnit = setObject.transform;
+        if (tempUnit != null)
+        {
+            Destroy(toolbarExpansion.temp);
+        }
         unitPlaced = false;
-        currentUnit = ((GameObject)Instantiate(g)).transform;
+    }
+
+    public void SwitchUnit(GameObject s)
+    {
+        setObject = (GameObject)Instantiate(s);
+        currentUnit = setObject.transform;
+        unitPlaced = false;
     }
 }
 
