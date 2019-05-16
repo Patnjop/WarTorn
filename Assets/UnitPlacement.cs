@@ -6,13 +6,14 @@ public class UnitPlacement : MonoBehaviour
 {
     public GameObject[] units;
     public Material BlueInfantryMat;
-    public GameObject UIManager;
+    public GameObject UIManager, temp;
     ToolbarExpansion toolbarExpansion;
+    PlaceableUnit placeableUnit;
     public GameObject setObject;
     bool unitPlaced;
     int classIndex;
+    int count;
     Transform currentUnit;
-    Transform tempUnit;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,27 +33,58 @@ public class UnitPlacement : MonoBehaviour
             currentUnit.position = new Vector3(p.x, 0.1f, p.z);
             if (Input.GetMouseButtonDown(1))
             {
-                unitPlaced = true;
-                SetUnit(units[toolbarExpansion.unitSelected]);
+                if (IsLegalPosition())
+                {
+                    unitPlaced = true;
+                    SetUnit(units[toolbarExpansion.unitSelected]);
+                }
             }
         }
+        if (toolbarExpansion.expand == true)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                toolbarExpansion.unitSelected = 0;
+                toolbarExpansion.SwitchToolbar();
+                SwitchUnit(units[toolbarExpansion.unitSelected]);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                toolbarExpansion.unitSelected = 1;
+                SwitchUnit(units[toolbarExpansion.unitSelected]);
+                toolbarExpansion.SwitchToolbar();
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                toolbarExpansion.unitSelected = 2;
+                SwitchUnit(units[toolbarExpansion.unitSelected]);
+                toolbarExpansion.SwitchToolbar();
+            }
+        }
+    }
+    bool IsLegalPosition()
+    {
+        if (placeableUnit.colliders.Count > 0)
+        {
+            return false;
+        }
+        return true;
     }
     public void SetUnit(GameObject g)
     {
         setObject = (GameObject)Instantiate(g);
         currentUnit = setObject.transform;
-        if (tempUnit != null)
-        {
-            Destroy(toolbarExpansion.temp);
-        }
+        placeableUnit = currentUnit.GetComponent<PlaceableUnit>();
         unitPlaced = false;
     }
 
     public void SwitchUnit(GameObject s)
     {
+        temp = setObject;
         setObject = (GameObject)Instantiate(s);
+        Destroy(temp);
         currentUnit = setObject.transform;
-        unitPlaced = false;
+        placeableUnit = currentUnit.GetComponent<PlaceableUnit>();
     }
 }
 

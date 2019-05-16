@@ -7,15 +7,16 @@ public class ToolbarExpansion : MonoBehaviour
 {
     public Button unitToolbarButton;
     public GameObject[] unitTypes;
-    public GameObject temp;
     public Image Background;
     RectTransform unitToolbar;
     public Text unitArrow, unitArrow2;
-    public bool expand, chosen = false;
+    public bool expand, chosen = false, toDestroy;
     public int maxWidth, unitSelected, unitSpeed;
     Vector2 startWidth;
     RectTransform unitButtonTransform;
+    public RectTransform infantry;
     public UnitPlacement unitPlacement;
+    int imageWidth;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +24,11 @@ public class ToolbarExpansion : MonoBehaviour
         unitToolbar = Background.GetComponent<RectTransform>();
         startWidth = unitToolbar.sizeDelta;
         unitArrow2.enabled = false;
+        imageWidth = Mathf.RoundToInt(infantry.sizeDelta.x);
+        maxWidth = imageWidth * 3;
     }
 
-    void SwitchToolbar()
+    public void SwitchToolbar()
     {
         if (expand == false)
         {
@@ -49,33 +52,33 @@ public class ToolbarExpansion : MonoBehaviour
         }
         if (unitSelected >= 1)
         {
-            unitSpeed = (unitSelected * 80);
+            unitSpeed = (unitSelected * imageWidth);
         }
 
 
         if (expand == true && unitToolbar.sizeDelta.x <= maxWidth)
         {
-            unitToolbar.position = unitToolbar.position + new Vector3(Time.deltaTime * 150f, 0, 0);
-            unitToolbarButton.GetComponent<RectTransform>().position = unitToolbarButton.GetComponent<RectTransform>().position + new Vector3(Time.deltaTime * 300f, 0, 0);
-            unitToolbar.sizeDelta = unitToolbar.sizeDelta + new Vector2(Time.deltaTime * 300f, 0);
+            unitToolbar.position = unitToolbar.position + new Vector3(Time.deltaTime * (imageWidth * 2), 0, 0);
+            unitToolbarButton.GetComponent<RectTransform>().position = unitToolbarButton.GetComponent<RectTransform>().position + new Vector3(Time.deltaTime * (imageWidth * 4), 0, 0);
+            unitToolbar.sizeDelta = unitToolbar.sizeDelta + new Vector2(Time.deltaTime * (imageWidth * 4), 0);
             for (int i = 0; i < unitTypes.Length; i++)
             {
-                if (unitTypes[i].GetComponent<RectTransform>().position.x <= 35 + (i * 70))
+                if (unitTypes[i].GetComponent<RectTransform>().position.x <= 35 + (i * imageWidth))
                 {
-                    unitTypes[i].GetComponent<RectTransform>().position = unitTypes[i].GetComponent<RectTransform>().position + new Vector3(Time.deltaTime * i * 148, 0, 0);
+                    unitTypes[i].GetComponent<RectTransform>().position = unitTypes[i].GetComponent<RectTransform>().position + new Vector3(Time.deltaTime * i * (imageWidth * 2), 0, 0);
                 }
             }
         }
         if (expand == false && unitToolbar.sizeDelta.x > startWidth.x)
         {
-            unitToolbar.position = unitToolbar.position - new Vector3(Time.deltaTime * 150f, 0, 0);
-            unitToolbarButton.GetComponent<RectTransform>().position = unitToolbarButton.GetComponent<RectTransform>().position - new Vector3(Time.deltaTime * 300f, 0, 0);
-            unitToolbar.sizeDelta = unitToolbar.sizeDelta - new Vector2(Time.deltaTime * 300f, 0);
+            unitToolbar.position = unitToolbar.position - new Vector3(Time.deltaTime * (imageWidth * 2), 0, 0);
+            unitToolbarButton.GetComponent<RectTransform>().position = unitToolbarButton.GetComponent<RectTransform>().position - new Vector3(Time.deltaTime * (imageWidth * 4), 0, 0);
+            unitToolbar.sizeDelta = unitToolbar.sizeDelta - new Vector2(Time.deltaTime * (imageWidth * 4), 0);
             for (int g = 0; g < unitTypes.Length; g++)
             {
-                if (unitTypes[g].GetComponent<RectTransform>().position.x > 35)
+                if (unitTypes[g].GetComponent<RectTransform>().position.x > imageWidth / 2)
                 {
-                    unitTypes[g].GetComponent<RectTransform>().position = unitTypes[g].GetComponent<RectTransform>().position - new Vector3(Time.deltaTime * g * 148, 0, 0);
+                    unitTypes[g].GetComponent<RectTransform>().position = unitTypes[g].GetComponent<RectTransform>().position - new Vector3(Time.deltaTime * g * (imageWidth * 2), 0, 0);
                 }
             }
         }
@@ -90,26 +93,7 @@ public class ToolbarExpansion : MonoBehaviour
             unitArrow.enabled = true;
         }
 
-        if (expand == true)
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                unitSelected = 0;
-                SwitchToolbar();
-                unitPlacement.SetUnit(unitPlacement.units[unitSelected]);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                unitSelected = 1;
-                temp = unitPlacement.units[unitSelected];
-                unitPlacement.SetUnit(temp);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                unitSelected = 2;
-                SwitchToolbar();
-            }
-        }
+        
     }
     IEnumerator Appear()
     {
