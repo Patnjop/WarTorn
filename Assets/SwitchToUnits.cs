@@ -24,6 +24,7 @@ public class SwitchToUnits : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //checking for input and eligibility
         if (Input.GetKeyDown(KeyCode.F) && canSwitch)
         {
             Switch();
@@ -32,6 +33,7 @@ public class SwitchToUnits : MonoBehaviour
 
     void Switch()
     {
+        //Instantiating each individual unit
         topLeft = transform.position + new Vector3(-(xScale / 2) + (unitScale / 2), 0, (zScale / 2) - (unitScale / 2));
         gameObject.SetActive(false);
         for(int r = 0; r< unitperRow; r++)
