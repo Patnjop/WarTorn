@@ -28,6 +28,7 @@ public class ToolbarExpansion : MonoBehaviour
         maxWidth = imageWidth * 3;
     }
 
+    //initiate toolbar change
     public void SwitchToolbar()
     {
         if (expand == false)
@@ -55,7 +56,7 @@ public class ToolbarExpansion : MonoBehaviour
             unitSpeed = (unitSelected * imageWidth);
         }
 
-
+        //expanding toolbar
         if (expand == true && unitToolbar.sizeDelta.x <= maxWidth)
         {
             unitToolbar.position = unitToolbar.position + new Vector3(Time.deltaTime * (imageWidth * 2), 0, 0);
@@ -69,6 +70,7 @@ public class ToolbarExpansion : MonoBehaviour
                 }
             }
         }
+        //minimising toolbar
         if (expand == false && unitToolbar.sizeDelta.x > startWidth.x)
         {
             unitToolbar.position = unitToolbar.position - new Vector3(Time.deltaTime * (imageWidth * 2), 0, 0);
@@ -83,7 +85,7 @@ public class ToolbarExpansion : MonoBehaviour
             }
         }
 
-
+        //arrow switching
         if (unitToolbar.sizeDelta.x >= maxWidth)
         {
             unitArrow2.enabled = true;
@@ -95,6 +97,7 @@ public class ToolbarExpansion : MonoBehaviour
 
         
     }
+    //enabling unit portraits
     IEnumerator Appear()
     {
         for (int a = 0; a < unitTypes.Length; a++)
@@ -104,6 +107,7 @@ public class ToolbarExpansion : MonoBehaviour
             unitTypes[a].GetComponent<Button>().enabled = true;
         }
     }
+    //disabling unit portraits
     IEnumerator Disappear()
     {
         for (int a = 2; a > -1; a--)

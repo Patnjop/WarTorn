@@ -41,7 +41,7 @@ public class UnitPlacement : MonoBehaviour
             Vector3 p = Camera.main.ScreenToWorldPoint(m);
             currentUnit.position = new Vector3(p.x, 0.1f, p.z);
             //Set Unit down
-            if (Input.GetMouseButtonDown(1) && goldCount > cost)
+            if (Input.GetMouseButtonDown(1) && goldCount >= cost)
             {
                 if (IsLegalPosition())
                 {
@@ -92,6 +92,7 @@ public class UnitPlacement : MonoBehaviour
         setObject = (GameObject)Instantiate(g);
         currentUnit = setObject.transform;
         placeableUnit = currentUnit.GetComponent<PlaceableUnit>();
+        g.GetComponent<SwitchToUnits>().canSwitch = true;
         unitPlaced = false;
     }
     //Switch unit place
@@ -102,6 +103,7 @@ public class UnitPlacement : MonoBehaviour
         Destroy(temp);
         currentUnit = setObject.transform;
         placeableUnit = currentUnit.GetComponent<PlaceableUnit>();
+        s.GetComponent<SwitchToUnits>().canSwitch = true;
     }
 }
 

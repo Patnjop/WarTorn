@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4522997979399661167}
   - component: {fileID: -8840223570401760510}
   - component: {fileID: 6595682063781350116}
+  - component: {fileID: 4144468200252471405}
   m_Layer: 0
   m_Name: Infantry_Blue
   m_TagString: MapUnit
@@ -122,3 +123,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4144468200252471405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4522997979399661136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b402a527aa8f73545b5d604975c60287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitperRow: 5
+  unitperCol: 3
+  unit: {fileID: 2047688193304509395, guid: 987d905235060c24fa878ac1e12871b9, type: 3}
