@@ -28,6 +28,7 @@ public class CardPick : MonoBehaviour
         {
             int rnd = Random.Range(0, cards.Length);
             GameObject card = Instantiate(cards[rnd], new Vector3(xWidth - (i * xWidth), 0, 0), Quaternion.identity);
+            card.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 650);
             card.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
             activeCards.Add(card);
         }
