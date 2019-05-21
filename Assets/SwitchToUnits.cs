@@ -5,6 +5,7 @@ using UnityEngine;
 public class SwitchToUnits : MonoBehaviour
 {
     float xScale, zScale;
+    public float gapSizeY;
     float unitScale;
     float gapSizeX, gapSizeZ;
     public int unitperRow, unitperCol;
@@ -34,7 +35,7 @@ public class SwitchToUnits : MonoBehaviour
     void Switch()
     {
         //Instantiating each individual unit
-        topLeft = transform.position + new Vector3(-(xScale / 2) + (unitScale / 2), 0, (zScale / 2) - (unitScale / 2));
+        topLeft = transform.position + new Vector3(-(xScale / 2) + (unitScale / 2), gapSizeY, (zScale / 2) - (unitScale / 2));
         gameObject.SetActive(false);
         for(int r = 0; r< unitperRow; r++)
         {
