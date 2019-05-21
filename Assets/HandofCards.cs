@@ -46,6 +46,7 @@ public class HandofCards : MonoBehaviour
 
     IEnumerator InstantiateHand()
     {
+        handmade = true;
         for (int i = 0; i < newDeck.Count; i++)
         {
             newDeck[i].GetComponent<RectTransform>().sizeDelta = new Vector2(100, 150);
@@ -53,6 +54,5 @@ public class HandofCards : MonoBehaviour
             card.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform);
             yield return new WaitForSeconds(0.3f);
         }
-        handmade = true;
     }
 }
