@@ -41,6 +41,11 @@ public class CardSelected : MonoBehaviour
                 if (IsLegalPosition())
                 {
                     unitPlaced = true;
+                    setObject.GetComponent<SwitchToUnits>().canSwitch = true;
+                    if (index == 3)
+                    {
+                        mana.waitTime -= 0.5f;
+                    }
                 }
             }
         }
@@ -65,7 +70,6 @@ public class CardSelected : MonoBehaviour
         setObject = (GameObject)Instantiate(unit);
         currentUnit = setObject.transform;
         placeableUnit = currentUnit.GetComponent<PlaceableUnit>();
-        unit.GetComponent<SwitchToUnits>().canSwitch = true;
         unitPlaced = false;
     }
     bool IsLegalPosition()

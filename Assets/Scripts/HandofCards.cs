@@ -25,18 +25,7 @@ public class HandofCards : MonoBehaviour
         {
             foreach (int i in cardPick.deck)
             {
-                if (i == 0)
-                {
-                    newDeck.Add(cardPick.cards[i]);
-                }
-                else if (i == 1)
-                {
-                    newDeck.Add(cardPick.cards[i]);
-                }
-                else if (i == 2)
-                {
-                    newDeck.Add(cardPick.cards[i]);
-                }
+                newDeck.Add(cardPick.cards[i]);
             }
             added = true;
         }

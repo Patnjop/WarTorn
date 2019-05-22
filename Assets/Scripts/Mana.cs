@@ -10,7 +10,7 @@ public class Mana : MonoBehaviour
     public int maxMana;
     public bool manatoAdd, startFill;
     public int manaCount;
-    public int waitTime;
+    public float waitTime;
     // Start is called before the first frame update
     void Start()
     {

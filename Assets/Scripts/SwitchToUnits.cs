@@ -12,9 +12,11 @@ public class SwitchToUnits : MonoBehaviour
     public GameObject unit;
     public bool canSwitch = false;
     Vector3 topLeft;
+
     // Start is called before the first frame update
     void Start()
     {
+        canSwitch = false;
         xScale = transform.localScale.x;
         zScale = transform.localScale.z;
         unitScale = xScale / (unitperRow + 1);
@@ -25,14 +27,14 @@ public class SwitchToUnits : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //checking for input and eligibility
-        if (Input.GetKeyDown(KeyCode.F) && canSwitch)
+        if (canSwitch == true)
         {
             Switch();
+            canSwitch = false;
         }
     }
 
-    void Switch()
+    public void Switch()
     {
         //Instantiating each individual unit
         topLeft = transform.position + new Vector3(-(xScale / 2) + (unitScale / 2), gapSizeY, (zScale / 2) - (unitScale / 2));
