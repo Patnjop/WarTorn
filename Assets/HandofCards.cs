@@ -7,12 +7,14 @@ public class HandofCards : MonoBehaviour
 {
     public List<GameObject> newDeck = new List<GameObject>();
     CardPick cardPick;
+    Mana mana;
     int handSize;
     bool added, handmade;
     // Start is called before the first frame update
     void Start()
     {
         cardPick = GameObject.Find("CardManager").GetComponent<CardPick>();
+        mana = GameObject.Find("MapManager").GetComponent<Mana>();
         handSize = cardPick.choiceCount;
     }
 
@@ -41,6 +43,7 @@ public class HandofCards : MonoBehaviour
         if (added == true && handmade == false)
         {
             StartCoroutine("InstantiateHand");
+            mana.StartCoroutine("InitialMana");
         }
     }
 

@@ -6,15 +6,18 @@ using UnityEngine.UI;
 public class CardSelected : MonoBehaviour
 {
     public int index;
+    public int cost;
     public GameObject unit;
     protected PlaceableUnit placeableUnit;
     protected bool clicked, unitPlaced;
     CardPick cardPick;
+    Mana mana;
     protected GameObject setObject;
     protected Transform currentUnit;
     // Start is called before the first frame update
     void Start()
     {
+        mana = GameObject.Find("MapManager").GetComponent<Mana>();
         cardPick = GameObject.Find("CardManager").GetComponent<CardPick>();
         this.GetComponent<Button>().onClick.AddListener(PickCard);
     }
@@ -35,7 +38,10 @@ public class CardSelected : MonoBehaviour
             //Set Unit down
             if (Input.GetMouseButtonDown(1))
             {
-                unitPlaced = true;
+                if (IsLegalPosition())
+                {
+                    unitPlaced = true;
+                }
             }
         }
     }
@@ -45,10 +51,14 @@ public class CardSelected : MonoBehaviour
     }
     void SwitchCard()
     {
-        this.GetComponent<Image>().enabled = false;
-        this.GetComponent<Button>().enabled = false;
-        unitPlaced = !unitPlaced;
-        PlayCard();
+        if (cost <= mana.manaCount)
+        {
+            this.GetComponent<Image>().enabled = false;
+            this.GetComponent<Button>().enabled = false;
+            unitPlaced = !unitPlaced;
+            PlayCard();
+            mana.SubtractMana(cost);
+        }
     }
     void PlayCard()
     {
@@ -57,5 +67,13 @@ public class CardSelected : MonoBehaviour
         placeableUnit = currentUnit.GetComponent<PlaceableUnit>();
         unit.GetComponent<SwitchToUnits>().canSwitch = true;
         unitPlaced = false;
+    }
+    bool IsLegalPosition()
+    {
+        if (placeableUnit.colliders.Count > 0)
+        {
+            return false;
+        }
+        return true;
     }
 }

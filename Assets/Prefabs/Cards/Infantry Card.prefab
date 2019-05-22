@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
+  cost: 1
   unit: {fileID: 4522997979399661136, guid: 3a08c95be0c266c46bb3e9831a16d5f8, type: 3}
 --- !u!114 &4589697009161472209
 MonoBehaviour:
