@@ -9,14 +9,18 @@ public class CardSelected : MonoBehaviour
     public int cost;
     public GameObject unit;
     protected PlaceableUnit placeableUnit;
-    protected bool clicked, unitPlaced;
+    protected bool clicked, unitPlaced, newRound;
     CardPick cardPick;
     Mana mana;
+    HandofCards handofCards;
+    public NextRound nextRound;
     protected GameObject setObject;
     protected Transform currentUnit;
     // Start is called before the first frame update
     void Start()
     {
+        nextRound = GameObject.Find("Next Round").GetComponent<NextRound>();
+        handofCards = GameObject.Find("CardManager").GetComponent<HandofCards>();
         mana = GameObject.Find("MapManager").GetComponent<Mana>();
         cardPick = GameObject.Find("CardManager").GetComponent<CardPick>();
         this.GetComponent<Button>().onClick.AddListener(PickCard);
@@ -28,6 +32,12 @@ public class CardSelected : MonoBehaviour
             this.GetComponent<Button>().onClick.RemoveListener(PickCard);
             this.GetComponent<Button>().onClick.AddListener(SwitchCard);
             clicked = true;
+        }
+        else if (nextRound.newRound == true && clicked == true)
+        {
+            this.GetComponent<Button>().onClick.RemoveListener(SwitchCard);
+            this.GetComponent<Button>().onClick.AddListener(PickCard);
+            clicked = false;
         }
         if (currentUnit != null && !unitPlaced)
         {
@@ -44,7 +54,7 @@ public class CardSelected : MonoBehaviour
                     setObject.GetComponent<SwitchToUnits>().canSwitch = true;
                     if (index == 3)
                     {
-                        mana.waitTime -= 0.5f;
+                        mana.waitTime -= 0.2f;
                     }
                 }
             }
@@ -60,6 +70,15 @@ public class CardSelected : MonoBehaviour
         {
             this.GetComponent<Image>().enabled = false;
             this.GetComponent<Button>().enabled = false;
+            handofCards.hand.Remove(gameObject);
+            foreach (GameObject g in handofCards.hand)
+            {
+                if (g.GetComponent<RectTransform>().position.x > this.GetComponent<RectTransform>().position.x)
+                {
+                    g.GetComponent<RectTransform>().position -= new Vector3(100, 0, 0);
+                }
+            }
+            handofCards.currentHandSize--;
             unitPlaced = !unitPlaced;
             PlayCard();
             mana.SubtractMana(cost);

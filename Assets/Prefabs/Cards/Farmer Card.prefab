@@ -134,5 +134,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 3
-  cost: 1
+  cost: 2
   unit: {fileID: 1203390180918900174, guid: ba15503faaa5b6348bf276b63a988451, type: 3}
+  nextRound: {fileID: 0}

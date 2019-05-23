@@ -9,35 +9,43 @@ public class CardPick : MonoBehaviour
     public int cardAmount;
     public int xWidth;
     bool canChoose = true;
+    public bool toAdd;
     List<GameObject> activeCards = new List<GameObject>();
     public List<int> deck = new List<int>();
+    HandofCards handofCards;
 
+    private void Start()
+    {
+        handofCards = GameObject.Find("CardManager").GetComponent<HandofCards>();
+    }
     // Update is called once per frame
     void Update()
     {
         if (choiceCount > 0 && canChoose == true)
         {
-            InitialCardChoice();
+            InitialCardChoice(cardAmount);
             canChoose = false;
         }
     }
 
-    void InitialCardChoice()
+    public void InitialCardChoice(int c)
     {
-        for (int i = 0; i < cardAmount; i++)
+        for (int i = 0; i < c; i++)
         {
             int rnd = Random.Range(0, cards.Length);
             GameObject card = Instantiate(cards[rnd], new Vector3(xWidth - (i * xWidth), 0, 0), Quaternion.identity);
             card.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 650);
             card.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
             activeCards.Add(card);
-        }
+        }       
     }
 
     public void CardPicked(int index)
     {
         Debug.Log("CardPicked");
         deck.Add(index);
+        handofCards.newDeck.Add(cards[index]);
+        handofCards.savedDeck.Add(cards[index]);
         foreach (GameObject g in activeCards)
         {
             Destroy(g);

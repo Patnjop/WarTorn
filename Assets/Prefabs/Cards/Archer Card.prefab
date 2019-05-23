@@ -136,3 +136,4 @@ MonoBehaviour:
   index: 2
   cost: 1
   unit: {fileID: 4042570996686520159, guid: 4467d89161015d54e9b53f3c83d3e27b, type: 3}
+  nextRound: {fileID: 0}

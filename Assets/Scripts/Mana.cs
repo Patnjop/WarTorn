@@ -8,7 +8,7 @@ public class Mana : MonoBehaviour
     GameObject fillBar;
     public List<GameObject> filled = new List<GameObject>();
     public int maxMana;
-    public bool manatoAdd, startFill;
+    public bool manatoAdd, startFill, reset;
     public int manaCount;
     public float waitTime;
     // Start is called before the first frame update
@@ -19,13 +19,13 @@ public class Mana : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (manatoAdd == true)
+        if (manatoAdd == true && reset == false)
         {
             StartCoroutine("AddMana");
             manatoAdd = false;
             startFill = true;
         }
-        if (startFill == true && manaCount < maxMana)
+        if (startFill == true && manaCount < maxMana && reset == false)
         {
             if (fillBar.GetComponent<RectTransform>().sizeDelta.y < 240)
             {
@@ -56,7 +56,7 @@ public class Mana : MonoBehaviour
 
     public IEnumerator AddMana()
     {
-        if (manaCount < maxMana)
+        if (manaCount < maxMana && reset == false)
         {
             yield return new WaitForSeconds(waitTime);
             GameObject newMana = Instantiate(filledMana, new Vector3(50, 850 + ((manaCount) * 50), 0), Quaternion.identity);
@@ -75,5 +75,20 @@ public class Mana : MonoBehaviour
             filled.Remove(filled[manaCount - 1]);
             manaCount--;
         }
+    }
+
+    public void ManaReset()
+    {
+        StopCoroutine("AddMana");
+        reset = true;
+        manatoAdd = true;
+        manaCount = 0;
+        foreach (GameObject m in filled)
+        {
+            Destroy(m);
+        }
+        filled.Clear();
+        fillBar.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 0);
+        fillBar.GetComponent<RectTransform>().position = new Vector3(15, 830, 0);
     }
 }
