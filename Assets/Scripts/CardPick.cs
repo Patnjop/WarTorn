@@ -13,9 +13,11 @@ public class CardPick : MonoBehaviour
     List<GameObject> activeCards = new List<GameObject>();
     public List<int> deck = new List<int>();
     HandofCards handofCards;
+    NextRound nextRound;
 
     private void Start()
     {
+        nextRound = GameObject.Find("Next Round").GetComponent<NextRound>();
         handofCards = GameObject.Find("CardManager").GetComponent<HandofCards>();
     }
     // Update is called once per frame
@@ -44,8 +46,10 @@ public class CardPick : MonoBehaviour
     {
         Debug.Log("CardPicked");
         deck.Add(index);
-        handofCards.newDeck.Add(cards[index]);
-        handofCards.savedDeck.Add(cards[index]);
+        if (nextRound.switched == true)
+        {
+            handofCards.savedDeck.Add(cards[index]);
+        }
         foreach (GameObject g in activeCards)
         {
             Destroy(g);

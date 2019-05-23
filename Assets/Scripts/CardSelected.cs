@@ -33,11 +33,11 @@ public class CardSelected : MonoBehaviour
             this.GetComponent<Button>().onClick.AddListener(SwitchCard);
             clicked = true;
         }
-        else if (nextRound.newRound == true && clicked == true)
+        if (nextRound.newRound == true)
         {
             this.GetComponent<Button>().onClick.RemoveListener(SwitchCard);
             this.GetComponent<Button>().onClick.AddListener(PickCard);
-            clicked = false;
+            nextRound.newRound = false;
         }
         if (currentUnit != null && !unitPlaced)
         {

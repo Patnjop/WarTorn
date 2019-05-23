@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SwitchToUnits : MonoBehaviour
 {
+    List<GameObject> allunits = new List<GameObject>();
     float xScale, zScale;
     public float gapSizeY;
     float unitScale;
@@ -12,10 +13,12 @@ public class SwitchToUnits : MonoBehaviour
     public GameObject unit;
     public bool canSwitch = false;
     Vector3 topLeft;
+    UnitCount unitCount;
 
     // Start is called before the first frame update
     void Start()
     {
+        unitCount = GameObject.Find("MapManager").GetComponent<UnitCount>();
         canSwitch = false;
         xScale = transform.localScale.x;
         zScale = transform.localScale.z;
@@ -38,15 +41,23 @@ public class SwitchToUnits : MonoBehaviour
     {
         //Instantiating each individual unit
         topLeft = transform.position + new Vector3(-(xScale / 2) + (unitScale / 2), gapSizeY, (zScale / 2) - (unitScale / 2));
-        gameObject.SetActive(false);
+        Destroy(gameObject);
         for(int r = 0; r< unitperRow; r++)
         {
             for (int c = 0; c < unitperCol; c++)
             {
-                Instantiate(unit, topLeft, Quaternion.identity);
+                GameObject dude = Instantiate(unit, topLeft, Quaternion.identity);
+                allunits.Add(dude);
                 topLeft = topLeft - new Vector3(0, 0, unitScale + gapSizeZ);
             }
             topLeft = topLeft + new Vector3(unitScale + gapSizeX, 0, unitperCol * (unitScale + gapSizeZ));
         }
+        GameObject parent = new GameObject();
+        parent.transform.position = this.transform.position;
+        foreach (GameObject d in allunits)
+        {
+            d.transform.SetParent(parent.transform);
+        }
+        unitCount.totalUnitCount.Add(parent);
     }
 }

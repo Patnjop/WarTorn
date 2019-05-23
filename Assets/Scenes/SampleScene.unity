@@ -856,6 +856,7 @@ GameObject:
   - component: {fileID: 807133766}
   - component: {fileID: 807133765}
   - component: {fileID: 807133767}
+  - component: {fileID: 807133768}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -926,6 +927,19 @@ MonoBehaviour:
   reset: 0
   manaCount: 0
   waitTime: 3
+--- !u!114 &807133768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807133764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75dda00bf4150954b82a4f76337e136f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalUnitCount: []
 --- !u!1 &859128788
 GameObject:
   m_ObjectHideFlags: 0
@@ -1985,6 +1999,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roundAmount: 3
+  added: 0
+  switched: 0
   newRound: 0
 --- !u!1 &1815156051
 GameObject:
@@ -2059,4 +2075,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roundAmount: 0
+  added: 0
+  switched: 0
   newRound: 0
