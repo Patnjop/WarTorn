@@ -41,7 +41,6 @@ public class SwitchToUnits : MonoBehaviour
     {
         //Instantiating each individual unit
         topLeft = transform.position + new Vector3(-(xScale / 2) + (unitScale / 2), gapSizeY, (zScale / 2) - (unitScale / 2));
-        Destroy(gameObject);
         for(int r = 0; r< unitperRow; r++)
         {
             for (int c = 0; c < unitperCol; c++)
@@ -52,12 +51,11 @@ public class SwitchToUnits : MonoBehaviour
             }
             topLeft = topLeft + new Vector3(unitScale + gapSizeX, 0, unitperCol * (unitScale + gapSizeZ));
         }
-        GameObject parent = new GameObject();
-        parent.transform.position = this.transform.position;
         foreach (GameObject d in allunits)
         {
-            d.transform.SetParent(parent.transform);
+            d.transform.SetParent(this.transform);
         }
-        unitCount.totalUnitCount.Add(parent);
+        unitCount.totalUnitCount.Add(this.gameObject);
+        this.GetComponent<MeshRenderer>().enabled = false;
     }
 }

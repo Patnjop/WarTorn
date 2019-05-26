@@ -6,6 +6,9 @@ TagManager:
   tags:
   - MapUnit
   - Canvas
+  - RedTower
+  - BlueTower
+  - Selectable
   layers:
   - Default
   - TransparentFX

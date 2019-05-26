@@ -71,13 +71,20 @@ public class HandofCards : MonoBehaviour
 
     public void DrawCard()
     {
-        int rnd = Random.Range(0, newDeck.Count);
-        newDeck[rnd].GetComponent<RectTransform>().sizeDelta = new Vector2(100, 150);
-        GameObject card = Instantiate(newDeck[rnd], new Vector3(75 + (currentHandSize * 100), 80, 0), Quaternion.identity);
-        card.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform);
-        hand.Add(card);
-        currentHandSize++;
-        newDeck.Remove(newDeck[rnd]);
+        if (newDeck.Count > 0)
+        {
+            int rnd = Random.Range(0, newDeck.Count);
+            newDeck[rnd].GetComponent<RectTransform>().sizeDelta = new Vector2(100, 150);
+            GameObject card = Instantiate(newDeck[rnd], new Vector3(75 + (currentHandSize * 100), 80, 0), Quaternion.identity);
+            card.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform);
+            hand.Add(card);
+            currentHandSize++;
+            newDeck.Remove(newDeck[rnd]);
+        }
+        else
+        {
+            Debug.Log("Deck Empty");
+        }
     }
 
 }

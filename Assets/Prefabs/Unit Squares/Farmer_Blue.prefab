@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gapSizeY: -0.05
-  unitperRow: 5
+  unitperRow: 3
   unitperCol: 3
   unit: {fileID: 2047688193304509395, guid: 987d905235060c24fa878ac1e12871b9, type: 3}
   canSwitch: 1
