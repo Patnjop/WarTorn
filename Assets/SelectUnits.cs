@@ -26,7 +26,19 @@ public class SelectUnits : MonoBehaviour
             {
                 initialPos = hit.point; 
             }
+            Ray mouseToWorldRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitInfo;
+
+            if (Physics.Raycast(mouseToWorldRay, out hitInfo))
+            {
+                UnitBehaviour u = hitInfo.collider.GetComponent<UnitBehaviour>();
+                if (u != null)
+                {
+
+                }
+            }
         }
+
             
         if (Input.GetMouseButton(0))
         {

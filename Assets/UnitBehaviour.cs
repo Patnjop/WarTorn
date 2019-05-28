@@ -34,10 +34,19 @@ public class UnitBehaviour : MonoBehaviour
         currentPos = this.transform.position;
         if (selected == true && ringSpawned == false)
         {
-            ring = Instantiate(selectRing, new Vector3(currentPos.x, 0.005f, currentPos.z), Quaternion.identity);
-            ring.transform.localScale = new Vector3(ringWidth, ringWidth, ringWidth);
-            ring.transform.SetParent(this.transform);
+            if (ring == null)
+            {
+                ring = Instantiate(selectRing, new Vector3(currentPos.x, 0.005f, currentPos.z), Quaternion.identity);
+                ring.transform.localScale = new Vector3(ringWidth, ringWidth, ringWidth);
+                ring.transform.SetParent(this.transform);
+            }
+            ring.SetActive(true);
             ringSpawned = true;
+        }
+        else if (selected == false && ringSpawned == true)
+        {
+            ring.SetActive(false);
+            ringSpawned = false;
         }
     }
 }

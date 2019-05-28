@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1293957991223364812}
   - component: {fileID: 4386788496220769670}
   - component: {fileID: 4511501949349571061}
+  - component: {fileID: 2923406139478895477}
   - component: {fileID: 3558721456923817167}
   m_Layer: 0
   m_Name: InfantryMan
@@ -109,11 +110,24 @@ MonoBehaviour:
   currentPos: {x: 0, y: 0, z: 0}
   target: {x: 0, y: 0, z: 0}
   dist: 0
+  ringWidth: 0.08
   selected: 0
   ringSpawned: 0
   selectRing: {fileID: 6448542486652273151, guid: e9ef17c9a2b7b6447b7fd062c06b49b0,
     type: 3}
   currentState: 0
+--- !u!114 &2923406139478895477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047688193304509395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810bd1ed513ed22449747818737f6239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &3558721456923817167
 Rigidbody:
   m_ObjectHideFlags: 0
