@@ -104,6 +104,8 @@ GameObject:
   - component: {fileID: 7022535764011635532}
   - component: {fileID: 1293957991223364812}
   - component: {fileID: 4386788496220769670}
+  - component: {fileID: 2558552348538885220}
+  - component: {fileID: 7148699073701487685}
   m_Layer: 0
   m_Name: CavalryMan
   m_TagString: Untagged
@@ -185,6 +187,41 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2558552348538885220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047688193304509395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7baf346926658f74aab29d3286cd3bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyColour: Red
+  currentPos: {x: 0, y: 0, z: 0}
+  target: {x: 0, y: 0, z: 0}
+  dist: 0
+  ringWidth: 0.12
+  ringHeight: 0.16
+  selected: 0
+  ringSpawned: 0
+  selectRing: {fileID: 6448542486652273151, guid: e9ef17c9a2b7b6447b7fd062c06b49b0,
+    type: 3}
+  currentState: 0
+--- !u!114 &7148699073701487685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047688193304509395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810bd1ed513ed22449747818737f6239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5806782428760460592
 GameObject:
   m_ObjectHideFlags: 0

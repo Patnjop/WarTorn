@@ -92,7 +92,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4511501949349571061
 MonoBehaviour:
@@ -111,6 +111,7 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   dist: 0
   ringWidth: 0.08
+  ringHeight: 0.08
   selected: 0
   ringSpawned: 0
   selectRing: {fileID: 6448542486652273151, guid: e9ef17c9a2b7b6447b7fd062c06b49b0,

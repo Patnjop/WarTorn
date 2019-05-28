@@ -7,10 +7,11 @@ public class UnitBehaviour : MonoBehaviour
     TowerManager towerManager;
     public string enemyColour;
     public Vector3 currentPos, target;
-    public float dist, ringWidth;
+    public float dist, ringWidth, ringHeight;
     public bool selected, ringSpawned;
     public GameObject selectRing;
     GameObject ring;
+    UnitCount unitCount;
 
     public enum BehaviourState
     {
@@ -26,6 +27,8 @@ public class UnitBehaviour : MonoBehaviour
     {
         currentState = BehaviourState.Offense;
         towerManager = GameObject.Find("TowerManager").GetComponent<TowerManager>();
+        target = GameObject.Find("Red Tower").transform.position;
+        unitCount = GameObject.Find("MapManager").GetComponent<UnitCount>();
     }
 
     // Update is called once per frame
@@ -37,16 +40,29 @@ public class UnitBehaviour : MonoBehaviour
             if (ring == null)
             {
                 ring = Instantiate(selectRing, new Vector3(currentPos.x, 0.005f, currentPos.z), Quaternion.identity);
-                ring.transform.localScale = new Vector3(ringWidth, ringWidth, ringWidth);
+                ring.transform.localScale = new Vector3(ringWidth, ringWidth, ringHeight);
                 ring.transform.SetParent(this.transform);
             }
             ring.SetActive(true);
             ringSpawned = true;
+            if (!unitCount.selectedUnits.Contains(this.gameObject))
+            {
+                unitCount.selectedUnits.Add(this.gameObject);
+            }
         }
         else if (selected == false && ringSpawned == true)
         {
             ring.SetActive(false);
             ringSpawned = false;
+            if (unitCount.selectedUnits.Contains(this.gameObject))
+            {
+                unitCount.selectedUnits.Remove(this.gameObject);
+            }
+        }
+
+        if (currentState == BehaviourState.Offense)
+        {
+            transform.position = Vector3.MoveTowards(currentPos, target, 0.5f * Time.deltaTime);
         }
     }
 }

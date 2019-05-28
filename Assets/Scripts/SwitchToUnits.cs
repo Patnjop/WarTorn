@@ -46,7 +46,7 @@ public class SwitchToUnits : MonoBehaviour
             for (int c = 0; c < unitperCol; c++)
             {
                 GameObject dude = Instantiate(unit, topLeft, Quaternion.identity);
-                allunits.Add(dude);
+                allunits.Add(dude);   
                 topLeft = topLeft - new Vector3(0, 0, unitScale + gapSizeZ);
             }
             topLeft = topLeft + new Vector3(unitScale + gapSizeX, 0, unitperCol * (unitScale + gapSizeZ));

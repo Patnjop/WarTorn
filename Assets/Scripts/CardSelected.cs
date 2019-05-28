@@ -16,9 +16,11 @@ public class CardSelected : MonoBehaviour
     public NextRound nextRound;
     protected GameObject setObject;
     protected Transform currentUnit;
+    MoveUnits moveUnits;
     // Start is called before the first frame update
     void Start()
     {
+        moveUnits = GameObject.Find("UnitManager").GetComponent<MoveUnits>();
         nextRound = GameObject.Find("Next Round").GetComponent<NextRound>();
         handofCards = GameObject.Find("CardManager").GetComponent<HandofCards>();
         mana = GameObject.Find("MapManager").GetComponent<Mana>();
@@ -51,6 +53,7 @@ public class CardSelected : MonoBehaviour
                 if (IsLegalPosition())
                 {
                     unitPlaced = true;
+                    moveUnits.unitActive = false;
                     setObject.GetComponent<SwitchToUnits>().canSwitch = true;
                     if (index == 3)
                     {
@@ -90,6 +93,7 @@ public class CardSelected : MonoBehaviour
         currentUnit = setObject.transform;
         placeableUnit = currentUnit.GetComponent<PlaceableUnit>();
         unitPlaced = false;
+        moveUnits.unitActive = true;
     }
     bool IsLegalPosition()
     {

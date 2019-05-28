@@ -5,7 +5,6 @@ using System.Linq;
  
 public class RTSSelection : MonoBehaviour
 {
-
     public static List<Selectable> selectables = new List<Selectable>();
 
     [Tooltip("Canvas is set automatically if not set in the inspector")]

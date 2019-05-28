@@ -16,7 +16,10 @@ public class DrawCard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            CardDraw();
+        }
     }
 
     void CardDraw()
