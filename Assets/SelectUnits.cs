@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class SelectUnits : MonoBehaviour
 {
-    RaycastHit hit;
+    
+    public RectTransform SelectBox;
+    
+    Vector3 initialPos;
+    Vector3 endPos;
     // Start is called before the first frame update
     void Start()
     {
-        
+        SelectBox.gameObject.SetActive(false); 
     }
 
     // Update is called once per frame
@@ -16,13 +20,39 @@ public class SelectUnits : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+            RaycastHit hit;
+
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
             {
-                if (hit.transform.tag == "Selectable")
-                {
-                    hit.transform.GetComponent<InfantryBehaviour>().selected = true;
-                }
+                initialPos = hit.point; 
             }
+        }
+            
+        if (Input.GetMouseButton(0))
+        {
+            if (!SelectBox.gameObject.activeInHierarchy)
+            {
+                SelectBox.gameObject.SetActive(true);
+            }
+
+            endPos = Input.mousePosition;
+
+            Vector3 squareStart = Camera.main.WorldToScreenPoint(initialPos);
+            squareStart.z = 0f;
+
+            Vector3 centre = (squareStart + endPos) / 2f;
+
+            SelectBox.position = centre;
+
+            float sizeX = Mathf.Abs(endPos.x - squareStart.x);
+            float sizeY = Mathf.Abs(endPos.y - squareStart.y );
+
+            SelectBox.sizeDelta = new Vector2(sizeX, sizeY);
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            SelectBox.gameObject.SetActive(false);
         }
     }
 }
