@@ -985,6 +985,7 @@ GameObject:
   - component: {fileID: 807133766}
   - component: {fileID: 807133767}
   - component: {fileID: 807133768}
+  - component: {fileID: 807133765}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -992,6 +993,33 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &807133765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807133764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4020295fa12959d4a8d2e1598c3f9dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyTypes:
+  - {fileID: 1592817986391234438, guid: 96959c2e8a5aac4468e1acc251386358, type: 3}
+  - {fileID: 1592817986391234438, guid: 8df5127cfa8ad514f94ee296af95edff, type: 3}
+  - {fileID: 1592817986391234438, guid: 1cd29a65ae5377e4995f08f0684f54f2, type: 3}
+  - {fileID: 1592817986391234438, guid: 289ae0873894e5b48b6e4dbd0e7d2716, type: 3}
+  unitstoPick: []
+  infantryCount: 3
+  archeryCount: 2
+  farmerCount: 2
+  cavalryCount: 1
+  EnemyMana: 0
+  maxMana: 5
+  EnemyWaitTime: 1
+  unitSummoning: 0
+  unitPicked: 0
 --- !u!4 &807133766
 Transform:
   m_ObjectHideFlags: 0
