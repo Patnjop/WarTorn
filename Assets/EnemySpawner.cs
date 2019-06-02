@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     int width = 1, unitHeight;
     public float waitTime;
     bool summoning = false;
+    GameObject unit;
 
     public List<GameObject> unitList = new List<GameObject>(); 
     public int InfantryCount, ArcheryCount, CavalryCount, FarmerCount;
@@ -20,13 +21,19 @@ public class EnemySpawner : MonoBehaviour
             unitList.Clear();
             SelectUnit();
             Invoke("PlayUnit", waitTime);
+            Invoke("SwitchUnits", (1 + waitTime));
             summoning = true;
         }
     }
 
     void PlayUnit()
     { 
-        Instantiate(unitList[rnd], new Vector3(-8.5f + (width * Random.Range(0,18)), 0, unitHeight), Quaternion.identity);
+        unit = Instantiate(unitList[rnd], new Vector3(-8.5f + (width * Random.Range(0,18)), 0, unitHeight), Quaternion.identity);  
+    }
+
+    void SwitchUnits()
+    {
+        unit.GetComponent<SwitchToUnits>().canSwitch = true;
         summoning = false;
     }
 

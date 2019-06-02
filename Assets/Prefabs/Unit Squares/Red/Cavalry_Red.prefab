@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1592817986391234491}
   - component: {fileID: 1592817986391234488}
   - component: {fileID: 1592817986391234489}
+  - component: {fileID: 3243210968971359737}
   m_Layer: 0
   m_Name: Cavalry_Red
   m_TagString: Untagged
@@ -91,3 +92,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3243210968971359737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592817986391234438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b402a527aa8f73545b5d604975c60287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gapSizeY: 0
+  unitperRow: 5
+  unitperCol: 2
+  unit: {fileID: 2047688193304509395, guid: 630e51244c65ceb4a9107270f34ed847, type: 3}
+  canSwitch: 1
