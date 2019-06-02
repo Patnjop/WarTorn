@@ -224,7 +224,7 @@ PrefabInstance:
     - target: {fileID: 8656884934919074878, guid: a1226f8942d8a474abfce56cc88399dd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.99
+      value: 2.23
       objectReference: {fileID: 0}
     - target: {fileID: 8656884934919074878, guid: a1226f8942d8a474abfce56cc88399dd,
         type: 3}
@@ -1010,16 +1010,13 @@ MonoBehaviour:
   - {fileID: 1592817986391234438, guid: 8df5127cfa8ad514f94ee296af95edff, type: 3}
   - {fileID: 1592817986391234438, guid: 1cd29a65ae5377e4995f08f0684f54f2, type: 3}
   - {fileID: 1592817986391234438, guid: 289ae0873894e5b48b6e4dbd0e7d2716, type: 3}
-  unitstoPick: []
-  infantryCount: 3
-  archeryCount: 2
-  farmerCount: 2
-  cavalryCount: 1
-  EnemyMana: 0
-  maxMana: 5
-  EnemyWaitTime: 1
-  unitSummoning: 0
-  unitPicked: 0
+  rnd: 0
+  waitTime: 0
+  unitList: []
+  InfantryCount: 3
+  ArcheryCount: 2
+  CavalryCount: 2
+  FarmerCount: 3
 --- !u!4 &807133766
 Transform:
   m_ObjectHideFlags: 0

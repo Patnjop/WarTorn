@@ -5,77 +5,69 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] EnemyTypes;
-    public List<GameObject> unitstoPick = new List<GameObject>();
+    public int rnd;
+    int width = 1, unitHeight;
+    public float waitTime;
+    bool summoning = false;
 
-    public int infantryCount, archeryCount, farmerCount, cavalryCount;
-    public int EnemyMana, maxMana, EnemyWaitTime;
-    int rnd, temp;
-    bool manatoAdd = true;
-    public bool unitSummoning, unitPicked = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public List<GameObject> unitList = new List<GameObject>(); 
+    public int InfantryCount, ArcheryCount, CavalryCount, FarmerCount;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (manatoAdd == true)
+        if (summoning == false)
         {
-            StartCoroutine("ManaRegen");
-            manatoAdd = false;
-        }
-        if (unitSummoning == false)
-        {
-            PickUnit();
-            unitPicked = false;
-            unitSummoning = true;
+            unitList.Clear();
+            SelectUnit();
+            Invoke("PlayUnit", waitTime);
+            summoning = true;
         }
     }
 
-    IEnumerator ManaRegen()
-    {
-        if (EnemyMana < maxMana)
-        {
-            yield return new WaitForSeconds(EnemyWaitTime);
-            EnemyMana++;
-        }
-        manatoAdd = true;
+    void PlayUnit()
+    { 
+        Instantiate(unitList[rnd], new Vector3(-8.5f + (width * Random.Range(0,18)), 0, unitHeight), Quaternion.identity);
+        summoning = false;
     }
 
-    void PickUnit()
+    void SelectUnit()
     {
-        unitstoPick = new List<GameObject>();
-        for (int i = 0; i < infantryCount; i++)
+        for (int i = 0; i < InfantryCount; i++)
         {
-            unitstoPick.Add(EnemyTypes[0]);
+            unitList.Add(EnemyTypes[0]);
         }
-        for (int i = 0; i < archeryCount; i++)
+        for (int a = 0; a < ArcheryCount; a++)
         {
-            unitstoPick.Add(EnemyTypes[1]);
+            unitList.Add(EnemyTypes[1]);
         }
-        for (int i = 0; i < cavalryCount; i++)
+        for (int c = 0; c < CavalryCount; c++)
         {
-            unitstoPick.Add(EnemyTypes[2]);
+            unitList.Add(EnemyTypes[2]);
         }
-        for (int i = 0; i < farmerCount; i++)
+        for (int f = 0; f < FarmerCount; f++)
         {
-            unitstoPick.Add(EnemyTypes[3]);
+            unitList.Add(EnemyTypes[3]);
         }
-        rnd = Random.Range(0, unitstoPick.Count);
-        Debug.Log(rnd);
-        if (rnd < (infantryCount + archeryCount) && unitPicked == false)
+        rnd = Random.Range(0, unitList.Count);
+        if (rnd < InfantryCount)
         {
-            Instantiate(unitstoPick[rnd], new Vector3(0, 0, 0), Quaternion.identity);
-            unitPicked = true;
-            unitSummoning = false;
+            waitTime = 1.5f;
+            unitHeight = 1;
         }
-        else if (rnd >= (infantryCount + archeryCount) && unitPicked == false)
+        else if (rnd >= InfantryCount && rnd < (InfantryCount + ArcheryCount))
         {
-            Instantiate(unitstoPick[rnd], new Vector3(0, 0, 0), Quaternion.identity);
-            unitPicked = true;
-            unitSummoning = false;
+            waitTime = 2;
+            unitHeight = 2;
+        }
+        else if (rnd >= (InfantryCount + ArcheryCount) && rnd < (InfantryCount + ArcheryCount + CavalryCount))
+        {
+            waitTime = 3;
+            unitHeight = 1;
+        }
+        else
+        {
+            waitTime = 3;
+            unitHeight = 3;
         }
     }
 }
