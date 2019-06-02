@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 1293957991223364812}
   - component: {fileID: 5853352122019979346}
   - component: {fileID: -2706108850845842723}
-  - component: {fileID: -3837797810491999327}
   m_Layer: 0
   m_Name: ArcherMan
-  m_TagString: Untagged
+  m_TagString: Selectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,15 +115,3 @@ MonoBehaviour:
   selectRing: {fileID: 6448542486652273151, guid: e9ef17c9a2b7b6447b7fd062c06b49b0,
     type: 3}
   currentState: 0
---- !u!114 &-3837797810491999327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2047688193304509395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 810bd1ed513ed22449747818737f6239, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

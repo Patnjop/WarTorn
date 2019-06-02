@@ -5,13 +5,14 @@ using UnityEngine;
 public class SwitchToUnits : MonoBehaviour
 {
     List<GameObject> allunits = new List<GameObject>();
-    float xScale, zScale;
+    public float xScale, zScale;
     public float gapSizeY;
-    float unitScale;
-    float gapSizeX, gapSizeZ;
+    public float unitScale;
+    public float gapSizeX, gapSizeZ;
     public int unitperRow, unitperCol;
     public GameObject unit;
-    public bool canSwitch = false;
+    public bool canSwitch;
+    public Vector3 target;
     Vector3 topLeft;
     UnitCount unitCount;
 
@@ -35,6 +36,7 @@ public class SwitchToUnits : MonoBehaviour
             Switch();
             canSwitch = false;
         }
+        transform.position = Vector3.MoveTowards(this.transform.position, target, 0.5f * Time.deltaTime);
     }
 
     public void Switch()
@@ -46,6 +48,10 @@ public class SwitchToUnits : MonoBehaviour
             for (int c = 0; c < unitperCol; c++)
             {
                 GameObject dude = Instantiate(unit, topLeft, Quaternion.identity);
+                if (r == 0 && c == 0)
+                {
+                    dude.GetComponent<UnitBehaviour>().leader = true;
+                }
                 allunits.Add(dude);   
                 topLeft = topLeft - new Vector3(0, 0, unitScale + gapSizeZ);
             }

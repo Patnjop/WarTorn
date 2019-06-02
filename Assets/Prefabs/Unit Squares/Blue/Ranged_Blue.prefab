@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 465114395286178165}
   - component: {fileID: -4409142174156852812}
   - component: {fileID: 1441528404434460138}
+  - component: {fileID: 6589397462516662353}
   m_Layer: 0
   m_Name: Ranged_Blue
   m_TagString: MapUnit
@@ -139,4 +140,16 @@ MonoBehaviour:
   unitperRow: 5
   unitperCol: 3
   unit: {fileID: 2047688193304509395, guid: 8c7a1b3d005fa17488a18e1f6be87d30, type: 3}
-  canSwitch: 0
+  canSwitch: 1
+--- !u!114 &6589397462516662353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4042570996686520159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810bd1ed513ed22449747818737f6239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

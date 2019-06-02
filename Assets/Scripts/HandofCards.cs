@@ -12,7 +12,7 @@ public class HandofCards : MonoBehaviour
     Mana mana;
     public int handSize;
     public int currentHandSize;
-    public bool added, handmade, manaAdded;
+    public bool added, handmade, manaAdded, startSpawning;
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +67,7 @@ public class HandofCards : MonoBehaviour
             newDeck.Remove(newDeck[n]);
             yield return new WaitForSeconds(0.3f);
         }
+        startSpawning = true;
     }
 
     public void DrawCard()

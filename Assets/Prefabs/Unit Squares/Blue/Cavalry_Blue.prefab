@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -767851367319605207}
   - component: {fileID: 2095978302241980790}
   - component: {fileID: -1147207451589828320}
+  - component: {fileID: -2438331833679716455}
   m_Layer: 0
   m_Name: Cavalry_Blue
   m_TagString: MapUnit
@@ -135,7 +136,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b402a527aa8f73545b5d604975c60287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gapSizeY: 0
   unitperRow: 5
   unitperCol: 2
   unit: {fileID: 2047688193304509395, guid: 7ed000da5dce8504886f17c5582a7fa2, type: 3}
-  canSwitch: 0
+  canSwitch: 1
+--- !u!114 &-2438331833679716455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2199591451469901225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810bd1ed513ed22449747818737f6239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

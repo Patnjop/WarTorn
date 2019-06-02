@@ -8,7 +8,7 @@ public class UnitBehaviour : MonoBehaviour
     public string enemyColour;
     public Vector3 currentPos, target;
     public float dist, ringWidth, ringHeight;
-    public bool selected, ringSpawned;
+    public bool selected, ringSpawned, leader;
     public GameObject selectRing;
     GameObject ring;
     UnitCount unitCount;
@@ -59,10 +59,9 @@ public class UnitBehaviour : MonoBehaviour
                 unitCount.selectedUnits.Remove(this.gameObject);
             }
         }
-
         if (currentState == BehaviourState.Offense)
         {
-            transform.position = Vector3.MoveTowards(currentPos, target, 0.5f * Time.deltaTime);
+            transform.Translate((target - currentPos) * Time.deltaTime * 0.3f);
         }
     }
 }

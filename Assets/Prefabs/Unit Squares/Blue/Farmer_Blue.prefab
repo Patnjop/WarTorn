@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8893979264875604046}
   - component: {fileID: 1379123010560792849}
   - component: {fileID: 9088691610623605063}
+  - component: {fileID: 6842250848572136319}
   m_Layer: 0
   m_Name: Farmer_Blue
   m_TagString: MapUnit
@@ -135,8 +136,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b402a527aa8f73545b5d604975c60287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xScale: 0
+  zScale: 0
   gapSizeY: -0.05
+  unitScale: 0
+  gapSizeX: 0
+  gapSizeZ: 0
   unitperRow: 3
   unitperCol: 3
   unit: {fileID: 2047688193304509395, guid: 987d905235060c24fa878ac1e12871b9, type: 3}
   canSwitch: 1
+  target: {x: 0, y: 0, z: 0}
+--- !u!114 &6842250848572136319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203390180918900174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810bd1ed513ed22449747818737f6239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitBehaviours: []

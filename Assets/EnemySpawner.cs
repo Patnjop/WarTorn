@@ -10,13 +10,19 @@ public class EnemySpawner : MonoBehaviour
     public float waitTime;
     bool summoning = false;
     GameObject unit;
+    HandofCards handofCards;
 
     public List<GameObject> unitList = new List<GameObject>(); 
     public int InfantryCount, ArcheryCount, CavalryCount, FarmerCount;
 
+    private void Start()
+    {
+        handofCards = GameObject.Find("CardManager").GetComponent<HandofCards>();
+    }
+
     private void Update()
     {
-        if (summoning == false)
+        if (summoning == false && handofCards.startSpawning == true)
         {
             unitList.Clear();
             SelectUnit();
@@ -28,7 +34,7 @@ public class EnemySpawner : MonoBehaviour
 
     void PlayUnit()
     { 
-        unit = Instantiate(unitList[rnd], new Vector3(-8.5f + (width * Random.Range(0,18)), 0, unitHeight), Quaternion.identity);  
+        unit = Instantiate(unitList[rnd], new Vector3(-8.5f + (width * Random.Range(0,18)), 0.1f, unitHeight), Quaternion.identity);  
     }
 
     void SwitchUnits()

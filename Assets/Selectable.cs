@@ -2,7 +2,7 @@
 
 public class Selectable : MonoBehaviour
 {
-
+    public Component[] unitBehaviours;
     internal bool isSelected
     {
         get
@@ -15,7 +15,11 @@ public class Selectable : MonoBehaviour
             //Replace this with your custom code. What do you want to happen to a Selectable when it get's (de)selected?
             Renderer r = GetComponentInChildren<Renderer>();
             if (r != null)
-                r.GetComponent<UnitBehaviour>().selected = value ? true : false;
+                unitBehaviours = GetComponentsInChildren<UnitBehaviour>();
+            foreach (UnitBehaviour uB in unitBehaviours)
+            {
+                uB.selected = value ? true : false;
+            }
         }
     }
 

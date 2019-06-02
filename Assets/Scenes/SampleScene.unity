@@ -543,6 +543,7 @@ MonoBehaviour:
   added: 0
   handmade: 0
   manaAdded: 0
+  startSpawning: 0
 --- !u!1 &431391821
 GameObject:
   m_ObjectHideFlags: 0
